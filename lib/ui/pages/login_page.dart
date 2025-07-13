@@ -1,6 +1,7 @@
 // ui/pages/login_page.dart
 import 'package:flutter/material.dart';
 import '../../services/auth_service.dart';
+import '../widgets/email_sheet.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -46,20 +47,24 @@ class _LoginPageState extends State<LoginPage> {
                 icon: const Icon(Icons.g_mobiledata),
                 label: const Text('Iniciar con Google'),
               ),
-              const SizedBox(height: 12),
+              /*const SizedBox(height: 12),
               ElevatedButton.icon(
                 onPressed:
                 _loading ? null : () => _run(_auth.signInWithFacebook),
                 icon: const Icon(Icons.facebook),
                 label: const Text('Iniciar con Facebook'),
               ),
+
+               */
               const SizedBox(height: 12),
               OutlinedButton(
                 onPressed: _loading
                     ? null
-                    : () async {
-                  // TODO: muestra diálogo para email / contraseña
-                },
+                    : () => showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  builder: (_) => const EmailSheet(),
+                ),
                 child: const Text('Email / Contraseña'),
               ),
               if (_loading) const Padding(
