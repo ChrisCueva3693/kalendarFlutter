@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/date_symbol_data_local.dart';         // 👈 intl
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 
 import 'firebase_options.dart';
 import 'router.dart';
@@ -34,7 +35,16 @@ class KalendarApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: Colors.indigo,
+        colorSchemeSeed: Colors.deepPurple,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.deepPurple,          // color de tu AppBar
+          foregroundColor: Colors.white,               // texto/blanco
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Colors.deepPurple,         // 👈 fondo de la status bar
+            statusBarIconBrightness: Brightness.light, // iconos blancos
+            statusBarBrightness: Brightness.dark,      // iOS (opcional)
+          ),
+        ),
       ),
 
       // ── Localización global de la app ──────────────────────────────────

@@ -18,20 +18,6 @@ class AuthService {
     );
     return _auth.signInWithCredential(credential);
   }
-/*
-  // ──────────── Facebook ────────────
-  Future<UserCredential> signInWithFacebook() async {
-    final LoginResult result = await FacebookAuth.instance.login();
-    if (result.status != LoginStatus.success) {
-      throw Exception(result.message);
-    }
-    final credential =
-    FacebookAuthProvider.credential(result.accessToken!.token);
-    return _auth.signInWithCredential(credential);
-  }
-
- */
-
   // ─────────── Email / Password ───────────
   Future<UserCredential> signInWithEmail({
     required String email,

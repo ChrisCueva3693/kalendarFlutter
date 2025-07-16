@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../widgets/sidebar_scaffold.dart';
+import 'package:flutter/services.dart'; // Necesario para la barra de estado
+
 
 class InfoPage extends StatelessWidget {
   const InfoPage({super.key});

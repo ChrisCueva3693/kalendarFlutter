@@ -40,9 +40,9 @@ class AppSidebar extends StatelessWidget {
             leading: const Icon(Icons.logout),
             title: const Text('Cerrar sesión'),
             onTap: () async {
-              Navigator.pop(context); // 1️⃣ cierra el Drawer
+              Navigator.pop(context);                       // cierra Drawer
 
-              // 2️⃣ Loader opcional
+              // Loader opcional
               showDialog(
                 context: context,
                 barrierDismissible: false,
@@ -51,14 +51,15 @@ class AppSidebar extends StatelessWidget {
               );
 
               try {
-                await auth.signOut(); // 3️⃣ cierra sesión
+                await auth.signOut();
               } finally {
                 if (!context.mounted) return;
 
-                Navigator.of(context).pop(); // 4️⃣ quita el loader
+                Navigator.of(context).pop();                // quita loader
 
-                // 5️⃣ vuelve a la primera ruta (donde vive tu StreamBuilder)
-                Navigator.of(context).popUntil((route) => route.isFirst);
+                // 🆕 restablece la pila y vuelve a '/'
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil('/', (route) => false);
               }
             },
           ),
