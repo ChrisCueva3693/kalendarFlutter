@@ -5,10 +5,16 @@ class SidebarScaffold extends StatelessWidget {
   final String title;
   final Widget body;
 
+  // 🆕 Propiedades opcionales para FAB
+  final Widget? floatingActionButton;
+  final FloatingActionButtonLocation? floatingActionButtonLocation;
+
   const SidebarScaffold({
     super.key,
     required this.title,
     required this.body,
+    this.floatingActionButton,
+    this.floatingActionButtonLocation,
   });
 
   @override
@@ -17,6 +23,9 @@ class SidebarScaffold extends StatelessWidget {
       appBar: AppBar(title: Text(title)),
       drawer: const AppSidebar(),
       body: body,
+      floatingActionButton: floatingActionButton,
+      floatingActionButtonLocation:
+      floatingActionButtonLocation ?? FloatingActionButtonLocation.endFloat,
     );
   }
 }
